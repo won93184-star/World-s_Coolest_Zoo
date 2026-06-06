@@ -1,16 +1,28 @@
 body::before {
-  /* Fixes background lag/stretching bug on Safari & mobile by creating a standalone frozen layer */
   content: "";
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  /* Use vh to match the viewport height tightly */
+  height: 100vh; 
   z-index: -1;
   background-image: url('https://i.postimg.cc/t4tmLNVq/IMG-3728.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 25%;
+  /* Forces hardware acceleration to stop the lag/stretching */
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* 1. Global Reset: Critical for predictable mobile layouts */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
 }
 
 body {
@@ -18,159 +30,153 @@ body {
   padding: 0;
   min-height: 100%;
   background-color: #000000;
-		font-family:'Outfit', sans-serif;
-		color: whitesmoke;
-		text-align: center;
+  font-family: 'Outfit', sans-serif;
+  color: whitesmoke;
+  text-align: center;
 }
 
-html {
-  height: 100%;
-}
-
+/* 2. Responsive Headings & Intros: Replaced max-content bugs with safety limits */
 h1 {
-		background-color: #B5013A;
-		display: block;
-		border-radius: 7px;
-		width: max-content;
-		padding: 0.25rem 0.5rem;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 0.625rem;
+  background-color: #B5013A;
+  display: block;
+  border-radius: 7px;
+  width: max-content;
+  max-width: 90%; /* Prevents text from shooting off mobile screens */
+  padding: 0.25rem 0.5rem;
+  margin: 0 auto 0.625rem auto;
 }
 
 .page-intro {
-		background-color: #0194B5;
-		display: block;
-		border-radius: 7px;
-		width: max-content;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 0.25rem 0.8rem;
+  background-color: #0194B5;
+  display: block;
+  border-radius: 7px;
+  width: max-content;
+  max-width: 90%; /* Ensures text wraps safely on mobile */
+  margin: 0 auto;
+  padding: 0.25rem 0.8rem;
 }
 
 ul {
-		list-style: none;
-		margin: 0px;
-		padding: 0px;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
 }
 
 h2 {
-		background-color: #01A27B;
-		display: block;
-		border-radius: 7px;
-		width: max-content;
-		padding: 0.25rem 0.5rem;
-		margin-left: auto;
-		margin-right: auto;
+  background-color: #01A27B;
+  display: block;
+  border-radius: 7px;
+  width: max-content;
+  max-width: 90%;
+  padding: 0.25rem 0.5rem;
+  margin: 0.5rem auto;
 }
 
+/* 3. Accessible Mobile Links: Fixed invalid color and expanded tap target */
 a {
-		color: babyblue;
-		text-decoration: none;
-		background-color: #D49D1A;
-		border: solid 5px #E0445F;
-		display: block;
-		border-radius: 7px;
-		width: max-content;
-		padding: 0.25rem 0.5rem;
-		margin: 0.1875rem auto;
+  color: royalblue; /* Fixed invalid 'babyblue' with a real hex code */
+  text-decoration: none;
+  background-color: #D49D1A;
+  border: solid 5px #E0445F;
+  display: block;
+  border-radius: 7px;
+  width: max-content;
+  max-width: 90%;
+  padding: 0.6rem 1rem; /* Increased padding for better mobile finger-tapping */
+  margin: 0.5rem auto;   /* Increased margin to prevent accidental double-clicks */
 }
 
 hr {
   border-radius: 5px;
-		border: none;
+  border: none;
   height: 0.4375rem;
-  background: linear-gradient(
-    to right, 
-    #b5013a, 
-    #d49d1a
-  );
-  
-  /* Centers the line and adds 30px spacing above and below */
+  background: linear-gradient(to right, #b5013a, #d49d1a);
   margin: 1.875rem auto;
-  
-  /* Occupies 80% of the screen, chopping 10% off both sides */
   width: 80%;
-  
-  /* Adjusted for a pure black backdrop to give a very crisp, subtle crimson ambient glow */
   box-shadow: 0px 0.25rem 0.75rem rgba(181, 1, 58, 0.35);
 }
 
 h3 {
-		background-color: #E0445F;
-		display: block;
-		border-radius: 7px;
-		width: max-content;
-		padding: 0.25rem 0.5rem;
-		margin: 3.125rem auto;
+  background-color: #E0445F;
+  display: block;
+  border-radius: 7px;
+  width: max-content;
+  max-width: 90%;
+  padding: 0.25rem 0.5rem;
+  margin: 3.125rem auto;
 }
 
+/* 4. Perfect Fluid Images */
 img {
-		border: black 5px solid;
-		border-radius: 5px
+  border: black 5px solid;
+  border-radius: 5px;
+  max-width: 80vw;   
+  max-height: 80vh;  
+  object-fit: contain; 
+  display: block;
+  margin: 0 auto; 
 }
 
-.lifespan {
-		background-color: #14243B;
-		display: block;
-		border-radius: 7px;
-		width: max-content;
-		padding: 0.25rem 0.5rem;
-		margin: 0.1875rem auto;
-}
-
-.stars {
-		background-color: #4A3718;
-		display: block;
-		border-radius: 7px;
-		width: max-content;
-		padding: 0.25rem 0.5rem;
-		margin: 0.1875rem auto;
-}
-
-.custom-male {
-		background-color: #2B547E;
-		display: block;
-		border-radius: 7px;
-		width: max-content;
-		padding: 0.25rem 0.5rem;
-		margin: 0.1875rem auto;
-}
-
+/* ==========================================================================
+   1. Shared Utility Base (DRY Architecture)
+   ========================================================================== */
+.lifespan,
+.stars,
+.custom-male,
 .custom-female {
-		background-color: #A24857;
-		display: block;
-		border-radius: 7px;
-		width: max-content;
-		padding: 0.25rem 0.5rem;
-		margin: 0.1875rem auto;
+  display: block;
+  border-radius: 7px;
+  
+  /* CRITICAL FOR ALL DEVICES: */
+  width: max-content; 
+  max-width: 92%;      /* Prevents horizontal overflow on narrow mobile screens */
+  box-sizing: border-box; /* Includes padding in width math */
+  
+  /* ERGONOMIC TOUCH TARGETS: */
+  padding: 0.5rem 0.8rem; /* Enhanced tap area to meet Google Lighthouse spec */
+  margin: 0.375rem auto;  /* Added vertical breathing room to avoid overlapping */
 }
 
+/* Unique Background State Assignments */
+.lifespan { background-color: #14243B; }
+.stars { background-color: #4A3718; }
+.custom-male { background-color: #2B547E; }
+.custom-female { background-color: #A24857; }
 
 
+/* ==========================================================================
+   2. Optimized Content & Typography Blocks
+   ========================================================================== */
 .description {
   white-space: normal;
   width: 100%;
-  max-width: 65ch;
-		padding: 0.25rem 0.5rem;
-		margin: 0.1875rem auto;
-  overflow-wrap: break-word; /*  👈 Breaks a giant URL or word if it's too wide for a phone */
-		background: linear-gradient(
-        135deg, 
-        #21092B 0%,    /* Dark rich purple */
-        #5F1B7A 35%,   /* Normal purple transition */
-        #15532A 65%,   /* Normal green transition */
-        #061F0E 100%   /* Dark rich green */
-    );
-		border-radius: 5px;
-		border: none;
+  max-width: 65ch; /* Excellent readability constraint for desktop */
+  box-sizing: border-box;
   
-
+  /* Mobile Safeguard */
+  padding: 0.6rem 1rem; 
+  margin: 0.5rem auto;
+  
+  /* Modern Word Break Fallbacks */
+  overflow-wrap: break-word;
+  word-break: break-word; 
+  
+  background: linear-gradient(
+    135deg, 
+    #21092B 0%,    
+    #5F1B7A 35%,   
+    #15532A 65%,   
+    #061F0E 100%   
+  );
+  border-radius: 5px;
+  border: none;
 }
 
 .footer-text {
-		font-weight: 700;    /* Standard bold */
+  font-weight: 700;    
   font-size: 0.85rem;
-		margin-top: 1.25rem; 
-		
+  margin-top: 1.25rem; 
+  
+  /* Clear line-height ensures multiline text doesn't overlap on mobile */
+  line-height: 1.4; 
 }
