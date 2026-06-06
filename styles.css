@@ -90,7 +90,7 @@ h3 {
 
 /* 4. Perfect Fluid Images */
 img {
-  border: grey 5px solid;
+  border: 5px solid gray;
   border-radius: 5px;
   max-width: 80vw;   
   max-height: 80vh;  
