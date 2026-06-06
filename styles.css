@@ -1,26 +1,3 @@
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  /* Use vh to match the viewport height tightly */
-  height: 100vh; 
-  z-index: -1;
-  background-image: url('https://i.postimg.cc/t4tmLNVq/IMG-3728.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center 25%;
-  /* Forces hardware acceleration to stop the lag/stretching */
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-}
-
-/* 1. Global Reset: Critical for predictable mobile layouts */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
 html {
   height: 100%;
 }
