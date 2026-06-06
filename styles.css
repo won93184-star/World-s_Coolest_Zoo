@@ -1,3 +1,8 @@
+/* 1. Global Reset: Critical for predictable mobile layouts */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
@@ -20,7 +25,7 @@ h1 {
   width: max-content;
   max-width: 90%; /* Prevents text from shooting off mobile screens */
   padding: 0.25rem 0.5rem;
-  margin: 0 auto 0.625rem auto;
+  margin: 1.2rem auto 0.625rem auto;
 }
 
 .page-intro {
@@ -85,7 +90,7 @@ h3 {
 
 /* 4. Perfect Fluid Images */
 img {
-  border: black 5px solid;
+  border: grey 5px solid;
   border-radius: 5px;
   max-width: 80vw;   
   max-height: 80vh;  
