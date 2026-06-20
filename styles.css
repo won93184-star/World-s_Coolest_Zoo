@@ -176,12 +176,6 @@ h1 {
   padding: 0.25rem 0.8rem;
 }
 
-ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-}
-
 h2 {
   background-color: #01A27B;
   display: inline-block;
@@ -237,26 +231,35 @@ img {
   margin: 0.75rem auto; 
 }
 
+ul {
+		display: flex;
+		flex-direction: row;
+		gap: 5px;
+		max-width: 70%;
+  flex-wrap: wrap;
+		justify-content: center;
+		list-style: none;
+  margin: 0px auto;
+  padding: 0px;
+}
+
 /* ==========================================================================
    1. Shared Utility Base (DRY Architecture)
    ========================================================================== */
-.lifespan,
-.stars,
-.custom-male,
-.custom-female, 
-.habitat, 
-.food {
-  display: block;
+
+li {
+  display: flex;
   border-radius: 7px;
   
   /* CRITICAL FOR ALL DEVICES: */
-  width: max-content; 
+  width: max-content;
+		height: max-content; 
   max-width: 92%;      /* Prevents horizontal overflow on narrow mobile screens */
   box-sizing: border-box; /* Includes padding in width math */
   
   /* ERGONOMIC TOUCH TARGETS: */
   padding: 0.5rem 0.8rem; /* Enhanced tap area to meet Google Lighthouse spec */
-  margin: 0.375rem auto;  /* Added vertical breathing room to avoid overlapping */
+  margin: 0.25rem 0.25rem;  /* Added vertical breathing room to avoid overlapping */
 }
 
 /* Unique Background State Assignments */
@@ -273,13 +276,12 @@ img {
    ========================================================================== */
 .description {
   white-space: normal;
-  width: 100%;
-  max-width: 65ch; /* Excellent readability constraint for desktop */
+  width: max-content;
   box-sizing: border-box;
   
   /* Mobile Safeguard */
-  padding: 0.6rem 1rem; 
-  margin: 0.5rem auto;
+  padding: 0.5rem 0.8rem; 
+  margin: 0.25rem;
   
   /* Modern Word Break Fallbacks */
   overflow-wrap: break-word;
