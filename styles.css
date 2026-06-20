@@ -3,6 +3,144 @@
   box-sizing: border-box;
 }
 
+/* PRIVACY NOTICE STYLING lllllllllllllllllllllll */
+/* Styling the native dialog box */
+.privacy-dialog {
+  background-color: #251B54; /* Your deep purple-blue blend */
+  border: 1px solid #332B5C;  
+  border-radius: 20px;       
+  padding: 2.2rem;
+  max-width: 440px;
+  width: 90%; 
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  box-shadow: 0 20px 50px #000000, 
+              0 0 40px #251B5499; 
+}
+
+.privacy-dialog::backdrop {
+  background-color: #000000D9; 
+  backdrop-filter: blur(6px);  
+}
+
+.privacy-dialog h2 {
+  color: #F5F5F5; /* Whitesmoke */
+  margin-top: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.privacy-intro {
+  color: #F5F5F5;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 1rem 0 1.5rem 0;
+  opacity: 0.9;
+}
+
+/* CONTAINER FOR THE SEPARATE BUTTON DRAWERS */
+.privacy-button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.2rem;
+}
+
+.privacy-drawer {
+  width: 100%;
+  text-align: left;
+}
+
+/* INDIVIDUAL ACCORDION BUTTONS */
+.privacy-drawer-btn {
+  background-color: #1E1540;   /* Slightly darker violet container block */
+  color: #C3B5FD;              /* Your highly readable soft muted lilac */
+  border: 1px solid #332B5C;
+  border-radius: 10px;
+  padding: 0.9rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;            /* Removes standard browser arrow */
+  display: flex;
+  justify-content: center;     /* Centers text like a proper button */
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.privacy-drawer-btn:hover {
+  background-color: #2D215E;
+  color: #F5F5F5;              /* Lights up to whitesmoke on hover */
+  border-color: #C3B5FD33;
+}
+
+.privacy-drawer-btn::-webkit-details-marker {
+  display: none;               /* Safari/Chrome arrow removal fallback */
+}
+
+/* Dynamic styling change when a button is clicked and open */
+.privacy-drawer[open] .privacy-drawer-btn {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: #2D215E;
+  color: #F5F5F5;
+}
+
+/* INTERNAL SCROLLABLE CONTENT BODY */
+.privacy-scroll-content {
+  background-color: #1E1540;
+  border: 1px solid #332B5C;
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 1.2rem;
+  max-height: 180px;           /* Clean internal scroll constraints */
+  overflow-y: auto;
+}
+
+.privacy-scroll-content h4 {
+  color: #C3B5FD;              /* Soft lilac headers inside text */
+  font-size: 0.9rem;
+  margin: 0 0 0.4rem 0;
+  font-weight: 600;
+}
+
+.privacy-scroll-content h4:not(:first-of-type) {
+  margin-top: 1.2rem;          /* Generous separation between clauses */
+}
+
+.privacy-scroll-content p {
+  color: #F5F5F5;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0 0 0.5rem 0;
+  opacity: 0.85;
+}
+
+/* THE PRIMARY DISMISSAL BUTTON */
+.privacy-main-close-btn {
+  background-color: #000000;  /* Pure black button base */
+  color: #F5F5F5;             /* Whitesmoke text */
+  border: 1px solid #F5F5F5;
+  border-radius: 10px;       
+  padding: 0.8rem 2rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;               
+  transition: all 0.2s ease-in-out;
+}
+
+.privacy-main-close-btn:hover {
+  background-color: #F5F5F5;  /* Color inversion on interaction */
+  color: #000000;
+  box-shadow: 0 0 15px #F5F5F533; 
+}
+/* PRIVACY NOTICE STYLING lllllllllllllllllllllll */
+
 html {
   height: 100%;
 }
@@ -38,15 +176,9 @@ h1 {
   padding: 0.25rem 0.8rem;
 }
 
-ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-}
-
 h2 {
   background-color: #01A27B;
-  display: block;
+  display: inline-block;
   border-radius: 7px;
   width: max-content;
   max-width: 90%;
@@ -85,38 +217,49 @@ h3 {
   width: max-content;
   max-width: 90%;
   padding: 0.25rem 0.5rem;
-  margin: 3.125rem auto;
+  margin: 1.125rem auto;
 }
 
 /* 4. Perfect Fluid Images */
 img {
-  border: 5px solid gray;
+  border: grey 5px solid;
   border-radius: 5px;
   max-width: 80vw;   
   max-height: 80vh;  
   object-fit: contain; 
   display: block;
-  margin: 0 auto; 
+  margin: 0.75rem auto; 
+}
+
+ul {
+		display: flex;
+		flex-direction: row;
+		gap: 5px;
+		max-width: 70%;
+  flex-wrap: wrap;
+		justify-content: center;
+		list-style: none;
+  margin: 0px auto;
+  padding: 0px;
 }
 
 /* ==========================================================================
    1. Shared Utility Base (DRY Architecture)
    ========================================================================== */
-.lifespan,
-.stars,
-.custom-male,
-.custom-female {
-  display: block;
+
+li {
+  display: flex;
   border-radius: 7px;
   
   /* CRITICAL FOR ALL DEVICES: */
-  width: max-content; 
+  width: max-content;
+		height: max-content; 
   max-width: 92%;      /* Prevents horizontal overflow on narrow mobile screens */
   box-sizing: border-box; /* Includes padding in width math */
   
   /* ERGONOMIC TOUCH TARGETS: */
   padding: 0.5rem 0.8rem; /* Enhanced tap area to meet Google Lighthouse spec */
-  margin: 0.375rem auto;  /* Added vertical breathing room to avoid overlapping */
+  margin: 0.25rem 0.25rem;  /* Added vertical breathing room to avoid overlapping */
 }
 
 /* Unique Background State Assignments */
@@ -124,6 +267,8 @@ img {
 .stars { background-color: #4A3718; }
 .custom-male { background-color: #2B547E; }
 .custom-female { background-color: #A24857; }
+.habitat { background-color:#0B321E; }
+.food {background-color:#251B54; }
 
 
 /* ==========================================================================
@@ -131,13 +276,12 @@ img {
    ========================================================================== */
 .description {
   white-space: normal;
-  width: 100%;
-  max-width: 65ch; /* Excellent readability constraint for desktop */
+  width: max-content;
   box-sizing: border-box;
   
   /* Mobile Safeguard */
-  padding: 0.6rem 1rem; 
-  margin: 0.5rem auto;
+  padding: 0.5rem 0.8rem; 
+  margin: 0.25rem;
   
   /* Modern Word Break Fallbacks */
   overflow-wrap: break-word;
